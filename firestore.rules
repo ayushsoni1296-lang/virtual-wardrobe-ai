@@ -1,0 +1,33 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper function
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // Profiles collection: users can read/write their own profile
+    match /profiles/{userId} {
+      allow read, write: if true;
+    }
+
+    // Clothing items: users can read/write their own clothing items
+    match /clothing_items/{itemId} {
+      allow read, write: if true;
+    }
+
+    // Outfits: users can read/write their own outfits
+    match /outfits/{outfitId} {
+      allow read, write: if true;
+    }
+
+    // Default catch-all
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+}

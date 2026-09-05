@@ -1,0 +1,6 @@
+{
+  "name": "Virtual Wardrobe",
+  "description": "Your closet. Smarter with AI. Digitize your wardrobe, manage clothes, and get personalized daily outfit suggestions.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
